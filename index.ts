@@ -29,7 +29,7 @@ for await (const runResult of board.run({
 	probe: new LogProbe(),
 	// probe
 })) {
-	console.log("=".repeat(80));
+	console.debug("\n", "^ ~~~~~~~~~ LogProbe", "\n");
 	console.log(`node:\t${runResult.node.id}`);
 	console.log(`type:\t${runResult.type}`);
 	console.log();
@@ -41,4 +41,5 @@ for await (const runResult of board.run({
 	} else if (runResult.type === "output") {
 		console.log(runResult.outputs);
 	}
+	console.log("=".repeat(80), "\n");
 }
