@@ -1,19 +1,38 @@
 import {
 	Board,
 	BreadboardNode,
-	InputValues,
+	GraphDescriptor,
 	LogProbe,
-	OutputValues,
 } from "@google-labs/breadboard";
+import { Core } from "@google-labs/core-kit";
+
+const nestedBoard = new Board();
+nestedBoard.input().wire(
+	"*",
+	nestedBoard.output({
+		nestedBoard: "Hello from nested board!",
+	})
+);
+
+////////////////////////////////////////
 
 const board: Board = new Board();
 
-const input: BreadboardNode<InputValues, OutputValues> = board.input();
-const output: BreadboardNode<InputValues, OutputValues> = board.output();
-input.wire("*", output);
+const coreKit: Core = board.addKit(Core);
 
-board.input().wire("*", board.output());
-board.input().wire("*", board.output());
+const invoke: BreadboardNode<any, any> = coreKit.invoke({
+	graph: nestedBoard as unknown as GraphDescriptor,
+});
+
+board.input().wire(
+	"*",
+	invoke.wire(
+		"*",
+		board.output({
+			mainBoard: "Hello from nested board!",
+		})
+	)
+);
 
 console.log("=".repeat(80));
 console.log(
