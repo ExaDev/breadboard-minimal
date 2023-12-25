@@ -32,10 +32,9 @@ for await (const runResult of board.run({
 	console.log();
 
 	if (runResult.type === "input") {
-		const inputs = {
+		runResult.inputs = {
 			timestamp: new Date().toISOString(),
 		};
-		runResult.inputs = inputs;
 	} else if (runResult.type === "output") {
 		console.log(runResult.outputs);
 	}
