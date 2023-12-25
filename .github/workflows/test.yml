@@ -24,6 +24,6 @@ jobs:
               uses: actions/setup-node@main
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: "${{ matrix.package-manager }}"
-            - run: ${{ matrix.package-manager }} ci
+                #   cache: "${{ matrix.package-manager }}"
+            - run: ${{ matrix.package-manager }} install
             - run: ${{ matrix.package-manager }} run test
