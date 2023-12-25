@@ -1,0 +1,29 @@
+on:
+    push:
+    pull_request:
+    workflow_dispatch:
+
+jobs:
+    build:
+        name: Node ${{ matrix.node-version }} ${{ matrix.package-manager }}
+        timeout-minutes: 5
+        runs-on: ubuntu-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                node-version:
+                    - 19.x
+                    - 20.x
+                    - 21.x
+                package-manager:
+                    - yarn
+                    - npm
+        steps:
+            - uses: actions/checkout@main
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@main
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: "${{ matrix.package-manager }}"
+            - run: ${{ matrix.package-manager }} ci
+            - run: ${{ matrix.package-manager }} run test
