@@ -8,11 +8,14 @@ import {
 
 const board: Board = new Board();
 
+// discretely defining nodes
 const input: BreadboardNode<InputValues, OutputValues> = board.input();
 const output: BreadboardNode<InputValues, OutputValues> = board.output();
+
+// defining an edge which passes all parameters between the the input and output node.
 input.wire("*", output);
 
-board.input().wire("*", board.output());
+// also chaining a new input to a new output
 board.input().wire("*", board.output());
 
 console.log("=".repeat(80));
