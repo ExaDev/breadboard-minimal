@@ -16,15 +16,18 @@ board.input().wire("*", board.output());
 board.input().wire("*", board.output());
 
 
+const probe = {
+	log: (...args: unknown[]) => {
+		console.debug();
+		console.debug("~".repeat(5) + " LogProbe " + "~".repeat(5));
+		console.debug(...args);
+		console.debug("~".repeat(20));
+	},
+};
+
 for await (const runResult of board.run({
-	probe: new LogProbe({
-		log: (...args: unknown[]) => {
-			console.debug();
-			console.debug("~".repeat(5) + " LogProbe " + "~".repeat(5));
-			console.debug(...args);
-			console.debug("~".repeat(20));
-		}
-	})
+	probe: new LogProbe(),
+	// probe
 })) {
 	console.log("=".repeat(80));
 	console.log(`node:\t${runResult.node.id}`);
