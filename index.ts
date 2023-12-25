@@ -15,6 +15,12 @@ input.wire("*", output);
 board.input().wire("*", board.output());
 board.input().wire("*", board.output());
 
+console.log("=".repeat(80));
+console.log(
+	"const graphDescriptor: GraphDescriptor =",
+	JSON.stringify(board, null, 2)
+);
+console.log("=".repeat(80));
 
 const probe = {
 	log: (...args: unknown[]) => {
