@@ -1,5 +1,7 @@
 {
-	"description": "",
+	"dependencies": {
+		"@google-labs/breadboard": "^0.6.0"
+	},
 	"devDependencies": {
 		"@types/node": "^20.10.5",
 		"tsx": "^4.7.0"
