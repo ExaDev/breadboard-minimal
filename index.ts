@@ -1,9 +1,15 @@
-import { Board, LogProbe } from "@google-labs/breadboard";
+import {
+	Board,
+	BreadboardNode,
+	InputValues,
+	LogProbe,
+	OutputValues,
+} from "@google-labs/breadboard";
 
-const board = new Board();
+const board: Board = new Board();
 
-const input = board.input();
-const output = board.output();
+const input: BreadboardNode<InputValues, OutputValues> = board.input();
+const output: BreadboardNode<InputValues, OutputValues> = board.output();
 input.wire("*", output);
 
 board.input().wire("*", board.output());
