@@ -1,0 +1,16 @@
+{
+	"description": "",
+	"devDependencies": {
+		"@types/node": "^20.10.5",
+		"tsx": "^4.7.0"
+	},
+	"engineStrict": true,
+	"engines": {
+		"node": ">=19"
+	},
+	"main": "index.ts",
+	"scripts": {
+		"start": "tsx index.ts"
+	},
+	"type": "module"
+}
