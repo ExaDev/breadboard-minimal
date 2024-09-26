@@ -4,7 +4,7 @@
 		"@google-labs/core-kit": "^0.1.0"
 	},
 	"devDependencies": {
-		"@types/node": "^20.10.5",
+		"@types/node": "^22.7.2",
 		"tsx": "^4.7.0"
 	},
 	"engineStrict": true,
